@@ -11,7 +11,7 @@ const ProfileScreen = () => {
   const handleChooseProfilePicture = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    if (permissionResult.granted === true) {
+    if (permissionResult.granted === false) {
       alert('Permission to access camera roll is required!');
       return;
     }

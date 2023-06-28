@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, DatePickerAndroid } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 const ProfileScreen = () => {
-  const [name, setName] = useState('John Doe');
-  const [bio, setBio] = useState('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+  const [name, setName] = useState('Josephus Mupanda');
+  const [bio, setBio] = useState('I am Software Engineer');
   const [profilePicture, setProfilePicture] = useState(null);
   const [editing, setEditing] = useState(false);
 
@@ -27,21 +27,6 @@ const ProfileScreen = () => {
     // Perform saving logic here
     // Update user information
     setEditing(false);
-  };
-
-  const openDatePicker = async () => {
-    try {
-      const { action, year, month, day } = await DatePickerAndroid.open({
-        date: new Date(),
-        mode: 'spinner',
-      });
-      if (action !== DatePickerAndroid.dismissedAction) {
-        // Handle the date selection
-        // Update user's date of birth
-      }
-    } catch ({ code, message }) {
-      console.warn('Cannot open date picker', message);
-    }
   };
 
   return (
@@ -86,9 +71,6 @@ const ProfileScreen = () => {
           <Text style={styles.saveButtonText}>Save Changes</Text>
         </TouchableOpacity>
       )}
-      <TouchableOpacity style={styles.datePickerButton} onPress={openDatePicker}>
-        <Text style={styles.datePickerButtonText}>Select Date of Birth</Text>
-      </TouchableOpacity>
       {/* Add other editable fields such as dropdown menus here */}
     </View>
   );
@@ -157,18 +139,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   saveButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  datePickerButton: {
-    backgroundColor: '#42c5f5',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginBottom: 20,
-  },
-  datePickerButtonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
